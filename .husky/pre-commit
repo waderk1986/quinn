@@ -1,0 +1,7 @@
+# Lint staged files
+npx lint-staged
+
+# Secret detection (if gitleaks is installed)
+if command -v gitleaks &>/dev/null; then
+	gitleaks git --pre-commit --staged --verbose
+fi

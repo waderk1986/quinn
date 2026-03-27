@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On the Ballot — Quinn Archibeque for Delta County Sheriff</title>
+    <meta
+      name="description"
+      content="Quinn Archibeque earned 77% of delegate votes at the Delta County Republican Assembly — no primary needed. He's on the November ballot for Delta County Sheriff."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #1a2333;
+        --navy-lt: #243147;
+        --gold: #c9a84c;
+        --gold-lt: #e2c47a;
+        /* Darker gold for text on light backgrounds — passes WCAG 3:1 */
+        --gold-on-light: #7a5c0a;
+        --cream: #f5f0e8;
+        --warm: #ede7d9;
+        --green: #2d6a4f;
+        --green-lt: #40916c;
+        --text: #1a2333;
+        --muted: #5a6070;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Source Serif 4', Georgia, serif;
+        background: var(--cream);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--navy);
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        border-bottom: 2px solid var(--gold);
+      }
+      .nav-logo {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+      }
+      .nav-logo-name {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .nav-logo-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+      .nav-back {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: color 0.2s;
+      }
+      .nav-back:hover {
+        color: var(--gold-lt);
+      }
+
+      /* ── WIN BANNER ── */
+      .win-banner {
+        margin-top: 64px;
+        background: var(--green);
+        text-align: center;
+        padding: 0.65rem 2rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .win-banner-star {
+        color: var(--gold-lt);
+        font-size: 1rem;
+      }
+      .win-banner strong {
+        color: var(--gold-lt);
+      }
+
+      /* ── HERO ── */
+      .victory-hero {
+        background: var(--navy);
+        padding: 5rem 2rem 6rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Diagonal stripe texture */
+      .victory-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(201, 168, 76, 0.03) 40px,
+          rgba(201, 168, 76, 0.03) 80px
+        );
+      }
+      /* Radial glow */
+      .victory-hero::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .victory-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .victory-eyebrow {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        font-size: 0.78rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.1s forwards;
+      }
+
+      /* ── BIG NUMBER ── */
+      .vote-pct {
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+        font-size: clamp(6rem, 18vw, 12rem);
+        color: var(--gold);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        display: block;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.25s forwards;
+      }
+      .vote-label {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+        display: block;
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.4s forwards;
+      }
+
+      .victory-title {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: clamp(1.8rem, 5vw, 3.2rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.5s forwards;
+      }
+      .victory-title em {
+        color: var(--gold);
+        font-style: italic;
+      }
+
+      .victory-rule {
+        width: 60px;
+        height: 2px;
+        background: var(--gold);
+        margin: 0 auto 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.6s ease 0.65s forwards;
+      }
+
+      .victory-sub {
+        font-family: 'Source Serif 4', serif;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        max-width: 580px;
+        margin: 0 auto 3rem;
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.75s forwards;
+      }
+
+      .november-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: rgba(201, 168, 76, 0.12);
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        border-radius: 2px;
+        padding: 0.9rem 2rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold-lt);
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.9s forwards;
+      }
+      .november-badge-star {
+        font-size: 1.1rem;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── STATEMENT SECTION ── */
+      .statement-wrap {
+        background: var(--cream);
+        padding: 5rem 2rem;
+      }
+      .statement-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .statement-eyebrow {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .statement-eyebrow::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.3;
+      }
+
+      .statement-card {
+        background: var(--navy);
+        border-radius: 4px;
+        padding: 3rem 3.5rem;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .statement-card.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .statement-card::before {
+        content: '\201C';
+        position: absolute;
+        top: -0.5rem;
+        left: 2rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 10rem;
+        color: var(--gold);
+        opacity: 0.08;
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .statement-card blockquote {
+        font-family: 'Source Serif 4', serif;
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.85;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 2rem;
+        font-style: normal;
+      }
+      .statement-card blockquote p {
+        margin-bottom: 1.1rem;
+      }
+      .statement-card blockquote p:last-child {
+        margin-bottom: 0;
+      }
+      .statement-card blockquote strong {
+        color: var(--gold-lt);
+        font-weight: 600;
+      }
+
+      .statement-sig {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid rgba(201, 168, 76, 0.2);
+        position: relative;
+        z-index: 1;
+      }
+      .statement-sig-rule {
+        width: 32px;
+        height: 2px;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+      .statement-sig-name {
+        font-family: 'Playfair Display', serif;
+        color: var(--gold);
+        font-size: 1.1rem;
+        font-style: italic;
+      }
+      .statement-sig-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 2px;
+      }
+
+      @media (max-width: 600px) {
+        .statement-card {
+          padding: 2rem 1.75rem;
+        }
+      }
+
+      /* ── STATS ROW ── */
+      .stats-row {
+        background: var(--warm);
+        padding: 4rem 2rem;
+      }
+      .stats-inner {
+        max-width: 760px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        text-align: center;
+      }
+      @media (max-width: 600px) {
+        .stats-inner {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+      .stat-block {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .stat-block.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .stat-block:nth-child(2) {
+        transition-delay: 0.12s;
+      }
+      .stat-block:nth-child(3) {
+        transition-delay: 0.24s;
+      }
+
+      .stat-block-num {
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+        font-size: 3rem;
+        color: var(--navy);
+        line-height: 1;
+        margin-bottom: 0.4rem;
+      }
+      .stat-block-num span {
+        color: var(--gold-on-light);
+      }
+      .stat-block-label {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* ── WHAT'S NEXT ── */
+      .next-wrap {
+        background: var(--cream);
+        padding: 5rem 2rem;
+      }
+      .next-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .next-eyebrow {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .next-eyebrow::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.3;
+      }
+      .next-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 1.5rem;
+        line-height: 1.15;
+      }
+      .next-title em {
+        color: var(--gold-on-light);
+        font-style: italic;
+      }
+      .next-body {
+        font-size: 1.05rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+      }
+
+      .next-card {
+        background: var(--navy);
+        border-radius: 4px;
+        padding: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .next-card.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .next-card-text {
+      }
+      .next-card-date {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+      }
+      .next-card-event {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .next-card-event em {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .next-card-sub {
+        font-family: 'Source Serif 4', serif;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        margin-top: 0.4rem;
+      }
+
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 0.85rem 2rem;
+        border-radius: 2px;
+        transition: all 0.2s;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .btn-primary:hover {
+        background: var(--gold-lt);
+      }
+      .btn-ghost {
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      /* ── MESA DIVIDER ── */
+      .mesa-divider {
+        width: 100%;
+        line-height: 0;
+        background: #0e1a2e;
+        overflow: hidden;
+      }
+      .mesa-divider-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      /* ── FOOTER ── */
+      .footer {
+        background: var(--navy);
+        border-top: 2px solid var(--gold);
+        padding: 2rem;
+        text-align: center;
+      }
+      .footer-name {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: 1.1rem;
+        display: block;
+      }
+      .footer-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 0.25rem;
+      }
+      .footer-slogan {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 1rem;
+      }
+      .footer-legal {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 0.75rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Quinn Archibeque</span>
+        <span class="nav-logo-title">for Sheriff</span>
+      </a>
+      <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <!-- WIN BANNER -->
+    <div class="win-banner">
+      <span class="win-banner-star">★</span>
+      <span><strong>Quinn is on the November Ballot</strong> &nbsp;·&nbsp; No Primary Needed</span>
+      <span class="win-banner-star">★</span>
+    </div>
+
+    <!-- VICTORY HERO -->
+    <section class="victory-hero">
+      <div class="victory-hero-inner">
+        <div class="victory-eyebrow">Delta County Republican Assembly · March 21, 2026</div>
+        <span class="vote-pct">77<span style="font-size: 0.55em; color: var(--gold-lt)">%</span></span>
+        <span class="vote-label">of delegate votes · No primary required</span>
+        <h1 class="victory-title">Quinn Is On the<br /><em>November Ballot</em></h1>
+        <div class="victory-rule"></div>
+        <p class="victory-sub">
+          An overwhelming show of grassroots support from the delegates of Delta County. The foundation has been laid —
+          now it's on to November.
+        </p>
+        <div class="november-badge">
+          <span class="november-badge-star">★</span>
+          November 3rd, 2026 &nbsp;·&nbsp; Delta County Sheriff
+        </div>
+      </div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="statement-wrap">
+      <div class="statement-inner">
+        <div class="statement-eyebrow">From Quinn</div>
+        <div class="statement-card" data-reveal>
+          <blockquote>
+            <p>
+              I am incredibly humbled by the overwhelming show of support I received at today's Delta County Assembly. I
+              received <strong>77% of the delegate votes</strong>, which means there will not be a Republican primary
+              election, and I am on the November Ballot.
+            </p>
+            <p>
+              Earning the trust of delegates at the grassroots level is absolutely critical and is the foundation
+              everything else is built on. I want to thank everyone who participated, those who supported me through
+              this process, and my friends and family.
+            </p>
+            <p>
+              Also, a very special thank you to <strong>Sheriff Taylor</strong> and
+              <strong>retired Sheriff McKee</strong> for standing with me on that stage and expressing their confidence
+              in me.
+            </p>
+            <p><strong>November 3rd, here we come!</strong></p>
+          </blockquote>
+          <div class="statement-sig">
+            <div class="statement-sig-rule"></div>
+            <div>
+              <div class="statement-sig-name">Quinn Archibeque</div>
+              <span class="statement-sig-title">Candidate for Delta County Sheriff</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stats-inner">
+        <div class="stat-block" data-reveal>
+          <div class="stat-block-num">77<span>%</span></div>
+          <div class="stat-block-label">Delegate Votes</div>
+        </div>
+        <div class="stat-block" data-reveal>
+          <div class="stat-block-num">0</div>
+          <div class="stat-block-label">Primary Needed</div>
+        </div>
+        <div class="stat-block" data-reveal>
+          <div class="stat-block-num">Nov<span> 3</span></div>
+          <div class="stat-block-label">General Election</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT'S NEXT -->
+    <section class="next-wrap">
+      <div class="next-inner">
+        <div class="next-eyebrow">What's Next</div>
+        <h2 class="next-title">The Road to <em>November</em></h2>
+        <p class="next-body">
+          The delegate process is complete. Quinn heads directly to the November general election as the Republican
+          candidate for Delta County Sheriff. Stay involved — the campaign is just getting started.
+        </p>
+        <div class="next-card" data-reveal>
+          <div class="next-card-text">
+            <div class="next-card-date">Tuesday, November 3rd, 2026</div>
+            <div class="next-card-event">General <em>Election</em></div>
+            <div class="next-card-sub">Delta County Sheriff · Vote Quinn Archibeque</div>
+          </div>
+          <a href="/#contact" class="btn btn-primary">Get Involved</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESA DIVIDER -->
+    <div class="mesa-divider">
+      <img src="/images/quinn-mesa.webp" alt="" aria-hidden="true" class="mesa-divider-img" width="2050" height="194" loading="lazy" />
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-name">Quinn Archibeque</span>
+      <span class="footer-title">for Delta County Sheriff</span>
+      <div class="footer-slogan">Homegrown Values · Proven Service · Leading with Experience</div>
+      <div class="footer-legal">
+        Paid for by the Committee to Elect Quinn Archibeque for Delta County Sheriff. Registered Agent: Quinn
+        Archibeque.
+      </div>
+    </footer>
+
+    <script>
+      const reveals = document.querySelectorAll('[data-reveal]');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      );
+      reveals.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

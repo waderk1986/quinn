@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endorsements — Quinn Archibeque for Delta County Sheriff</title>
+    <meta
+      name="description"
+      content="Quinn Archibeque is endorsed by four sitting sheriffs and the Delta County Search & Rescue Commander. Read their letters of support."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #1a2333;
+        --navy-lt: #243147;
+        --gold: #c9a84c;
+        --gold-lt: #e2c47a;
+        --gold-on-light: #7a5c0a;
+        --cream: #f5f0e8;
+        --warm: #ede7d9;
+        --text: #1a2333;
+        --muted: #5a6070;
+        --nav-h: 64px;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+      body {
+        font-family: 'Source Serif 4', Georgia, serif;
+        background: var(--navy);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        background: var(--navy);
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--nav-h);
+        border-bottom: 2px solid var(--gold);
+      }
+      .nav-logo {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+      }
+      .nav-logo-name {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .nav-logo-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+      .nav-back {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: color 0.2s;
+      }
+      .nav-back:hover {
+        color: var(--gold-lt);
+      }
+
+      /* ══════════════════════════════════════════
+       STICKY SCROLL SYSTEM
+    ══════════════════════════════════════════ */
+
+      #stage {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+
+      .letter-scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        padding-top: var(--nav-h);
+        opacity: 0;
+        transform: translateY(50px);
+        transition:
+          opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        pointer-events: none;
+      }
+      .letter-scene.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .letter-scene.exiting {
+        opacity: 0;
+        transform: translateY(-35px);
+      }
+
+      .letter-scene:nth-child(odd) {
+        background: var(--navy);
+      }
+      .letter-scene:nth-child(even) {
+        background: var(--navy-lt);
+      }
+
+      .letter-scene::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(201, 168, 76, 0.025) 40px,
+          rgba(201, 168, 76, 0.025) 80px
+        );
+        pointer-events: none;
+      }
+
+      /* ── Scene layout: left identity / right quote ── */
+      .scene-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 3rem;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .scene-left {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        border-right: 1px solid rgba(201, 168, 76, 0.15);
+        padding-right: 5rem;
+      }
+
+      .scene-counter {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(5rem, 10vw, 9rem);
+        font-weight: 900;
+        color: rgba(201, 168, 76, 0.07);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: -1.5rem;
+      }
+
+      .scene-eyebrow {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.7;
+      }
+
+      .scene-name {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+      }
+
+      .scene-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.6;
+      }
+
+      .scene-rule {
+        width: 36px;
+        height: 2px;
+        background: var(--gold);
+      }
+
+      /* ── Prominent gold PDF button ── */
+      .scene-pdf {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--gold);
+        color: var(--navy);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.9rem 1.75rem;
+        border-radius: 2px;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        align-self: flex-start;
+        margin-top: 0.25rem;
+      }
+      .scene-pdf:hover {
+        background: var(--gold-lt);
+        transform: translateY(-1px);
+      }
+      .scene-pdf svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      /* ── Right: quote ── */
+      .scene-right {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .scene-quote-mark {
+        font-family: 'Playfair Display', serif;
+        font-size: 5rem;
+        color: var(--gold);
+        opacity: 0.18;
+        line-height: 0.7;
+      }
+
+      .scene-quote {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: clamp(1.1rem, 2vw, 1.45rem);
+        color: rgba(255, 255, 255, 0.92);
+        line-height: 1.75;
+      }
+
+      .scene-context {
+        font-family: 'Source Serif 4', serif;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.8;
+        max-width: 460px;
+      }
+
+      /* ── Progress dots ── */
+      #progress-dots {
+        position: fixed;
+        right: 1.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 150;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+      .progress-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(201, 168, 76, 0.25);
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        transition:
+          background 0.3s,
+          transform 0.3s;
+        cursor: pointer;
+      }
+      .progress-dot.active {
+        background: var(--gold);
+        transform: scale(1.6);
+      }
+
+      /* ── Scroll hint ── */
+      .scroll-hint {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 150;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        transition: opacity 0.4s;
+      }
+      .scroll-hint.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .scroll-hint-label {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .scroll-hint-line {
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(to bottom, rgba(201, 168, 76, 0.5), transparent);
+        animation: drip 2s ease-in-out infinite;
+      }
+      @keyframes drip {
+        0%,
+        100% {
+          opacity: 0.4;
+          transform: scaleY(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1.12);
+        }
+      }
+
+      /* ── Spacer ── */
+      #scroll-spacer {
+        position: relative;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* ══════════════════════════════════════════
+       CTA + FOOTER — slides up over stage
+    ══════════════════════════════════════════ */
+      .page-end {
+        position: relative;
+        z-index: 10;
+      }
+
+      .cta-section {
+        background: var(--cream);
+        border-radius: 24px 24px 0 0;
+        box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.3);
+        padding: 5rem 2rem;
+        text-align: center;
+      }
+      .cta-section-inner {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      .cta-eyebrow {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold-on-light);
+        margin-bottom: 0.75rem;
+      }
+      .cta-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 1.25rem;
+        line-height: 1.15;
+      }
+      .cta-title em {
+        color: var(--gold-on-light);
+        font-style: italic;
+      }
+      .cta-body {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+      }
+      .btn-row {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.88rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 0.9rem 2.5rem;
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .btn-primary:hover {
+        background: var(--gold-lt);
+      }
+      .btn-ghost {
+        border: 2px solid var(--navy);
+        color: var(--navy);
+      }
+      .btn-ghost:hover {
+        background: var(--navy);
+        color: #fff;
+      }
+
+      .mesa-divider {
+        width: 100%;
+        line-height: 0;
+        background: #0e1a2e;
+        overflow: hidden;
+      }
+      .mesa-divider-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .footer {
+        background: var(--navy);
+        border-top: 2px solid var(--gold);
+        padding: 2rem;
+        text-align: center;
+      }
+      .footer-name {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: 1.1rem;
+        display: block;
+      }
+      .footer-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: var(--gold);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 0.25rem;
+      }
+      .footer-slogan {
+        font-family: 'Barlow Condensed', sans-serif;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 1rem;
+      }
+      .footer-legal {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 0.75rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 0.05em;
+      }
+
+      /* ── Mobile ── */
+      @media (max-width: 768px) {
+        .scene-inner {
+          grid-template-columns: 1fr;
+          padding: 1.5rem 1.5rem 2rem;
+          gap: 1.25rem;
+          align-items: start;
+          overflow-y: auto;
+        }
+        .scene-left {
+          border-right: none;
+          border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+          padding-right: 0;
+          padding-bottom: 1.25rem;
+          gap: 0.9rem;
+        }
+        .scene-counter {
+          font-size: 3.5rem;
+          margin-bottom: -0.75rem;
+        }
+        .scene-quote {
+          font-size: 1rem;
+        }
+        #progress-dots {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Quinn Archibeque</span>
+        <span class="nav-logo-title">for Sheriff</span>
+      </a>
+      <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <!-- FIXED STAGE -->
+    <div id="stage">
+      <!-- 01 — Taylor -->
+      <div class="letter-scene active" data-index="0">
+        <div class="scene-inner">
+          <div class="scene-left">
+            <div class="scene-counter">01</div>
+            <div class="scene-eyebrow">Delta County, Colorado</div>
+            <div class="scene-name">Sheriff Mark L. Taylor</div>
+            <div class="scene-title">Delta County Sheriff<br />Quinn's Direct Supervisor · 8 Years</div>
+            <div class="scene-rule"></div>
+            <a
+              href="/pdfs/Sheriff Taylor Letter.pdf"
+              target="_blank"
+              rel="noopener"
+              class="scene-pdf"
+              aria-label="Download Sheriff Taylor endorsement letter"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 15V3" />
+                <path d="M7 10l5 5 5-5" />
+                <rect x="3" y="17" width="18" height="4" rx="1" />
+              </svg>
+              Download Full Letter
+            </a>
+          </div>
+          <div class="scene-right">
+            <div class="scene-quote-mark">"</div>
+            <p class="scene-quote">
+              Only one possesses the experience, knowledge, and moral compass required to lead the Sheriff's Office into
+              the future with integrity and compassion: Quinn Archibeque.
+            </p>
+            <p class="scene-context">
+              As Quinn's direct supervisor for eight years, Sheriff Taylor calls this "the most consequential local race
+              on the ballot." He appointed Quinn Undersheriff in 2018 and writes that Quinn has "proven daily that he
+              was the right choice."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 — Covault -->
+      <div class="letter-scene" data-index="1">
+        <div class="scene-inner">
+          <div class="scene-left">
+            <div class="scene-counter">02</div>
+            <div class="scene-eyebrow">San Miguel County, Colorado</div>
+            <div class="scene-name">Sheriff Dan Covault</div>
+            <div class="scene-title">San Miguel County Sheriff<br />Colleague &amp; Mentor · 6+ Years</div>
+            <div class="scene-rule"></div>
+            <a
+              href="/pdfs/Sheriff Covalt Letter.pdf"
+              target="_blank"
+              rel="noopener"
+              class="scene-pdf"
+              aria-label="Download Sheriff Covault endorsement letter"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 15V3" />
+                <path d="M7 10l5 5 5-5" />
+                <rect x="3" y="17" width="18" height="4" rx="1" />
+              </svg>
+              Download Full Letter
+            </a>
+          </div>
+          <div class="scene-right">
+            <div class="scene-quote-mark">"</div>
+            <p class="scene-quote">
+              His sound advice, integrity, and strong moral compass were qualities I relied upon, particularly during
+              difficult moments.
+            </p>
+            <p class="scene-context">
+              Sheriff Covault describes Quinn as a mentor from the moment he entered law enforcement leadership. He
+              writes that Quinn "has built his career on honesty and integrity" and stands "unwavering in his
+              principles" — committed to ensuring all people are treated fairly and justly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — Perry -->
+      <div class="letter-scene" data-index="2">
+        <div class="scene-inner">
+          <div class="scene-left">
+            <div class="scene-counter">03</div>
+            <div class="scene-eyebrow">Ouray County, Colorado</div>
+            <div class="scene-name">Sheriff Justin Perry</div>
+            <div class="scene-title">Ouray County Sheriff<br />Known Quinn Since 2002</div>
+            <div class="scene-rule"></div>
+            <a
+              href="/pdfs/Sheriff Perry Letter.pdf"
+              target="_blank"
+              rel="noopener"
+              class="scene-pdf"
+              aria-label="Download Sheriff Perry endorsement letter"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 15V3" />
+                <path d="M7 10l5 5 5-5" />
+                <rect x="3" y="17" width="18" height="4" rx="1" />
+              </svg>
+              Download Full Letter
+            </a>
+          </div>
+          <div class="scene-right">
+            <div class="scene-quote-mark">"</div>
+            <p class="scene-quote">
+              Quinn is a man of strong character, integrity, and professionalism. His credibility is beyond reproach. I
+              highly recommend selecting Quinn Archibeque as Sheriff for Delta County.
+            </p>
+            <p class="scene-context">
+              Sheriff Perry first met Quinn in 2002 at the Delta law enforcement academy. He highlights Quinn's deep
+              respect for the Constitution, his community-first approach, and his strong collaborative relationships
+              across the 7th Judicial District and the Western Slope.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 — Rowell -->
+      <div class="letter-scene" data-index="3">
+        <div class="scene-inner">
+          <div class="scene-left">
+            <div class="scene-counter">04</div>
+            <div class="scene-eyebrow">Mesa County, Colorado</div>
+            <div class="scene-name">Sheriff Todd Rowell</div>
+            <div class="scene-title">Mesa County Sheriff<br />Colleague · 10+ Years</div>
+            <div class="scene-rule"></div>
+            <a
+              href="/pdfs/Sheriff Rowell Letter.pdf"
+              target="_blank"
+              rel="noopener"
+              class="scene-pdf"
+              aria-label="Download Sheriff Rowell endorsement letter"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 15V3" />
+                <path d="M7 10l5 5 5-5" />
+                <rect x="3" y="17" width="18" height="4" rx="1" />
+              </svg>
+              Download Full Letter
+            </a>
+          </div>
+          <div class="scene-right">
+            <div class="scene-quote-mark">"</div>
+            <p class="scene-quote">
+              There is no doubt in my mind that Quinn has the character, knowledge and dedication to serve Delta County
+              as their next Sheriff. It is my honor to endorse Quinn Archibeque.
+            </p>
+            <p class="scene-context">
+              Having worked alongside Quinn for over a decade, Sheriff Rowell speaks to Quinn's professionalism not just
+              within Delta County but across the state — reflecting the regional respect Quinn has earned throughout his
+              career in Western Colorado law enforcement.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 — Toltz -->
+      <div class="letter-scene" data-index="4">
+        <div class="scene-inner">
+          <div class="scene-left">
+            <div class="scene-counter">05</div>
+            <div class="scene-eyebrow">Delta County, Colorado</div>
+            <div class="scene-name">Randy Toltz</div>
+            <div class="scene-title">Commander<br />Delta County Search &amp; Rescue</div>
+            <div class="scene-rule"></div>
+            <a
+              href="/pdfs/Randy Toltz Letter.pdf"
+              target="_blank"
+              rel="noopener"
+              class="scene-pdf"
+              aria-label="Download Randy Toltz endorsement letter"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 15V3" />
+                <path d="M7 10l5 5 5-5" />
+                <rect x="3" y="17" width="18" height="4" rx="1" />
+              </svg>
+              Download Full Letter
+            </a>
+          </div>
+          <div class="scene-right">
+            <div class="scene-quote-mark">"</div>
+            <p class="scene-quote">
+              He has always acted professionally, honestly — and more than anything his responses and actions are both
+              measured and well thought out.
+            </p>
+            <p class="scene-context">
+              Having worked with Quinn for nearly five years across routine operations and high-stakes emergencies,
+              Toltz is confident Quinn will "not only continue the best practices of the current Sheriff's Office, but
+              will build on that foundation to advance the future of law enforcement in Delta County."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /#stage -->
+
+    <!-- SCROLL SPACER -->
+    <div id="scroll-spacer"></div>
+
+    <!-- PROGRESS DOTS -->
+    <nav id="progress-dots" aria-label="Endorsement navigation">
+      <div class="progress-dot active" data-target="0" title="Sheriff Taylor"></div>
+      <div class="progress-dot" data-target="1" title="Sheriff Covault"></div>
+      <div class="progress-dot" data-target="2" title="Sheriff Perry"></div>
+      <div class="progress-dot" data-target="3" title="Sheriff Rowell"></div>
+      <div class="progress-dot" data-target="4" title="Randy Toltz"></div>
+    </nav>
+
+    <!-- SCROLL HINT -->
+    <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+      <span class="scroll-hint-label">Scroll</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+
+    <!-- PAGE END — slides up over stage -->
+    <div class="page-end">
+      <section class="cta-section">
+        <div class="cta-section-inner">
+          <div class="cta-eyebrow">Join the Campaign</div>
+          <h2 class="cta-title">Stand with <em>Quinn</em></h2>
+          <p class="cta-body">
+            Four sheriffs. A Search &amp; Rescue Commander. People who have worked alongside Quinn for years and seen
+            him lead when it counts. Join them.
+          </p>
+          <div class="btn-row">
+            <a href="/#contact" class="btn btn-primary">Get Involved</a>
+            <a href="/" class="btn btn-ghost">Back to Home</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="mesa-divider">
+        <img
+          src="/images/quinn-mesa.webp"
+          alt=""
+          aria-hidden="true"
+          class="mesa-divider-img"
+          width="2050"
+          height="194"
+          loading="lazy"
+        />
+      </div>
+
+      <footer class="footer">
+        <span class="footer-name">Quinn Archibeque</span>
+        <span class="footer-title">for Delta County Sheriff</span>
+        <div class="footer-slogan">Homegrown Values · Proven Service · Leading with Experience</div>
+        <div class="footer-legal">
+          Paid for by the Committee to Elect Quinn Archibeque for Delta County Sheriff. Registered Agent: Quinn
+          Archibeque.
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        const SCENES = Array.from(document.querySelectorAll('.letter-scene'));
+        const DOTS = Array.from(document.querySelectorAll('.progress-dot'));
+        const SPACER = document.getElementById('scroll-spacer');
+        const HINT = document.getElementById('scrollHint');
+        const COUNT = SCENES.length;
+        const VH = () => window.innerHeight;
+
+        // Each scene gets 100vh of scroll travel
+        // Extra 15vh so CTA starts to peek before last scene exits
+        function setSpacerHeight() {
+          SPACER.style.height = COUNT * VH() + VH() * 0.15 + 'px';
+        }
+        setSpacerHeight();
+        window.addEventListener('resize', setSpacerHeight, { passive: true });
+
+        let current = 0;
+        let ticking = false;
+
+        function targetIndex() {
+          const idx = Math.floor(window.scrollY / VH());
+          return Math.max(0, Math.min(COUNT - 1, idx));
+        }
+
+        function activate(next) {
+          if (next === current) return;
+          const prev = current;
+          current = next;
+
+          SCENES[prev].classList.remove('active');
+          SCENES[prev].classList.add('exiting');
+          SCENES[next].classList.remove('exiting');
+          SCENES[next].classList.add('active');
+
+          setTimeout(() => SCENES[prev].classList.remove('exiting'), 550);
+
+          DOTS.forEach((d, i) => d.classList.toggle('active', i === next));
+        }
+
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+              activate(targetIndex());
+              // hide scroll hint after 30% into first scene
+              HINT.classList.toggle('hidden', window.scrollY > VH() * 0.3);
+              ticking = false;
+            });
+          },
+          { passive: true }
+        );
+
+        // Dot clicks
+        DOTS.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const t = parseInt(dot.dataset.target, 10);
+            window.scrollTo({ top: t * VH(), behavior: 'smooth' });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-missing-references": "error",
+    "aria-label-misuse": "error",
+    "no-redundant-role": "error",
+    "wcag/h30": "error",
+    "wcag/h37": "error",
+    "wcag/h67": "warn",
+    "input-missing-label": "error",
+    "no-inline-style": "off",
+    "long-title": "off",
+    "heading-level": "warn",
+    "no-aria-hidden-body": "off",
+    "void-style": "off",
+    "doctype-style": "off"
+  }
+}

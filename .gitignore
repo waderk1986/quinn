@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment / secrets
+.env
+.env.local
+.env*.local
+
+# Build & QA output
+dist/
+build/
+reports/
+.lighthouseci/
+
+# Sensitive campaign docs
+*.docx
+pdfs/
+emails/
+
+# Cache
+.cache/

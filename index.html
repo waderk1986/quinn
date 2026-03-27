@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quinn Archibeque for Delta County Sheriff</title>
+    <meta name="description" content="Quinn Archibeque is running for Delta County Sheriff. Learn about his experience, endorsements, and vision for the county." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .btn-story-link {
+        display: inline-block;
+        margin-top: 2rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.4);
+        padding-bottom: 2px;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .btn-story-link:hover {
+        color: #e2c47a;
+        border-color: #e2c47a;
+      }
+      .nav-caucus {
+        background: #9e2a2b !important;
+        color: #fff !important;
+        padding: 0.3rem 0.9rem !important;
+        border-radius: 2px;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 0.8rem !important;
+        font-weight: 700;
+        animation: pulse-red 2s infinite;
+      }
+      .nav-caucus:hover {
+        background: #b83535 !important;
+        color: #fff !important;
+      }
+      @keyframes pulse-red {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(158, 42, 43, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(158, 42, 43, 0);
+        }
+      }
+
+      /* Endorsements — gold pill, subtle pulse */
+      .nav-endorsements {
+        color: var(--navy) !important;
+        background: #c9a84c !important;
+        padding: 0.3rem 0.9rem !important;
+        border-radius: 2px;
+        font-family: 'Barlow Condensed', sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 0.8rem !important;
+        font-weight: 700;
+        animation: pulse-gold 2.5s infinite;
+      }
+      .nav-endorsements:hover {
+        background: #e2c47a !important;
+        color: var(--navy) !important;
+      }
+      @keyframes pulse-gold {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.45);
+        }
+        50% {
+          box-shadow: 0 0 0 5px rgba(201, 168, 76, 0);
+        }
+      }
+      .caucus-alert {
+        background: #9e2a2b;
+        text-align: center;
+        padding: 0.7rem 2rem;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .caucus-alert strong {
+        color: #e2c47a;
+      }
+      .caucus-alert a {
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0.2rem 0.9rem;
+        border-radius: 2px;
+        font-size: 0.78rem;
+        letter-spacing: 0.15em;
+        transition: background 0.2s;
+      }
+      .caucus-alert a:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Mesa landscape divider above footer */
+      .mesa-divider {
+        width: 100%;
+        line-height: 0;
+        background: #0e1a2e;
+        overflow: hidden;
+      }
+      .mesa-divider-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      /* ── Endorsements Preview Section ── */
+      .endorsements-preview {
+        background: var(--navy);
+        padding: 80px 40px;
+      }
+      .endorsements-preview-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+      }
+      .endorsements-preview .section-eyebrow {
+        color: var(--gold);
+      }
+      .endorsements-preview .section-title {
+        color: #fff;
+      }
+      .endorsements-preview .section-title em {
+        color: var(--gold);
+      }
+
+      .endorsements-list {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid rgba(201, 168, 76, 0.15);
+      }
+      .endorsement-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 2rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      }
+      .endorsement-row-left {
+      }
+      .endorsement-row-quote {
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: 0.97rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        margin-bottom: 0.4rem;
+      }
+      .endorsement-row-name {
+        font-family: var(--font-cond);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .endorsements-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-top: 1.75rem;
+      }
+      .btn-endorsements {
+        font-family: var(--font-cond);
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-decoration: none;
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        padding: 0.6rem 1.5rem;
+        border-radius: 2px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .btn-endorsements:hover {
+        background: rgba(201, 168, 76, 0.1);
+        border-color: var(--gold);
+      }
+      @media (max-width: 768px) {
+        .endorsements-preview {
+          padding: 60px 24px;
+        }
+        .endorsement-row {
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-name">Quinn Archibeque</span>
+          <span class="nav-logo-title">for Sheriff</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="story.html">Quinn's Story</a></li>
+          <li><a href="#values">Values</a></li>
+          <li><a href="caucus.html" class="nav-caucus">Caucus</a></li>
+          <li><a href="endorsements.html" class="nav-endorsements">Endorsements</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="nav-cta">Get Involved</a></li>
+        </ul>
+        <button type="button" class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+      <div class="nav-mobile" id="navMobile">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="/story.html">Quinn's Story</a></li>
+          <li><a href="#values">Values</a></li>
+          <li><a href="/caucus.html">Caucus ★</a></li>
+          <li><a href="/endorsements.html">Endorsements ★</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="nav-cta">Get Involved</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <canvas class="hero-canvas" id="heroCanvas"></canvas>
+      <div class="hero-grain"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal">Delta County Sheriff 2026</div>
+        <h1 class="hero-name reveal delay-1">
+          <span class="hero-name-first">Quinn</span>
+          <span class="hero-name-last">Archibeque</span>
+        </h1>
+        <div class="hero-rule reveal delay-2"></div>
+        <p class="hero-slogan reveal delay-3">
+          Homegrown Values &nbsp;·&nbsp; Proven Service &nbsp;·&nbsp; Leading with Experience
+        </p>
+        <div class="hero-actions reveal delay-4">
+          <a href="#about" class="btn btn-primary">Meet Quinn</a>
+          <a href="#contact" class="btn btn-ghost">Support the Campaign</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint reveal delay-5">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-photo-col">
+          <div class="about-photo-frame">
+            <img src="/images/quinn.webp" alt="Quinn Archibeque" class="about-photo-img" width="800" height="1732" loading="lazy" />
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-star">★</div>
+            <div class="about-badge-text">Delta County<br />Home &amp; Heart</div>
+          </div>
+        </div>
+        <div class="about-text-col">
+          <div class="section-eyebrow">About the Candidate</div>
+          <h2 class="section-title">A Sheriff Who <em>Knows</em> This County</h2>
+          <p class="about-lead">
+            Quinn Archibeque isn't a politician. He's a neighbor, a public servant, and a man who has dedicated his
+            career to keeping Delta County safe.
+          </p>
+          <p class="about-body">
+            Quinn has chosen to make Delta County his own — it's where he has raised his family, planted his roots, and
+            built a life he's proud of. He understands the values and challenges of our community not from a briefing,
+            but from a lifetime of living them. With nearly 28 years in law enforcement across the Cedaredge Police
+            Department, Delta Police Department, and the Delta County Sheriff's Office, his commitment to this community
+            runs deep. This May marks 18 years at the Sheriff's Office alone — rising from volunteer deputy all the way
+            to Undersheriff. His vision for the Sheriff's Office is built on the same foundation as the community he
+            serves: integrity, accountability, and genuine care for every resident.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-num">28<span>+</span></div>
+              <div class="stat-label">Years in Law Enforcement</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">18<span>+</span></div>
+              <div class="stat-label">Years at the Sheriff's Office</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100<span>%</span></div>
+              <div class="stat-label">Committed to Delta County</div>
+            </div>
+          </div>
+          <a href="/story.html" class="btn-story-link">Read Quinn's Full Story &rarr;</a>
+        </div>
+      </div>
+    </section>
+    <section class="values" id="values">
+      <div class="values-inner">
+        <div class="section-eyebrow center">The Foundation</div>
+        <h2 class="section-title center">Three Pillars of <em>Leadership</em></h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-num">01</div>
+            <div class="value-icon">⚓</div>
+            <h3 class="value-title">Homegrown Values</h3>
+            <p class="value-body">
+              Rooted in the traditions and character of Western Colorado, Quinn brings the values of hard work, honesty,
+              and community to every decision he makes.
+            </p>
+          </div>
+
+          <div class="value-card value-card--featured">
+            <div class="value-num">02</div>
+            <div class="value-icon">🛡</div>
+            <h3 class="value-title">Proven Service</h3>
+            <p class="value-body">
+              Nearly three decades of hands-on law enforcement experience across three agencies. Quinn's record isn't a
+              promise — it's a history of showing up for Delta County when it counted most.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-num">03</div>
+            <div class="value-icon">★</div>
+            <h3 class="value-title">Leading with Experience</h3>
+            <p class="value-body">
+              From volunteer deputy to Undersheriff — experience isn't just time served, it's wisdom earned at every
+              level of the department. Quinn brings seasoned leadership and clear judgment to the role of Sheriff.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section class="experience" id="experience">
+      <div class="experience-inner">
+        <div class="section-eyebrow">Track Record</div>
+        <h2 class="section-title">A Life of <em>Service</em></h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">Early Career</div>
+              <h3 class="timeline-title">Law Enforcement Foundation</h3>
+              <p class="timeline-body">
+                Began his career in public safety serving the communities of Delta County — including the Cedaredge
+                Police Department and Delta Police Department — building the skills, judgment, and relationships that
+                would define decades of dedicated service.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">Sheriff's Office — 18 Years</div>
+              <h3 class="timeline-title">Rising Through the Ranks</h3>
+              <p class="timeline-body">
+                Joined the Delta County Sheriff's Office as a volunteer deputy and rose through every level of the
+                department: Patrol Deputy, Detention Officer, Detective, Detective Sergeant, and now Undersheriff —
+                earning the trust of colleagues and community members through consistent performance and uncompromising
+                integrity.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">Today</div>
+              <h3 class="timeline-title">Ready to Lead as Sheriff</h3>
+              <p class="timeline-body">
+                With nearly 28 years of experience and deep roots in Delta County, Quinn is ready to step into the role
+                of Sheriff — bringing the full depth of his service record to lead the department into a stronger, safer
+                future for every resident.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE BREAK -->
+    <section class="quote-break">
+      <div class="quote-break-inner">
+        <div class="quote-mark">"</div>
+        <blockquote>
+          Accountability under the law. Protection of constitutional rights. Leadership rooted in Western Colorado
+          values. That is my commitment to the people of Delta County.
+        </blockquote>
+        <cite>— Quinn Archibeque</cite>
+      </div>
+    </section>
+
+    <!-- ENDORSEMENTS -->
+    <section class="endorsements-preview" id="endorsements">
+      <div class="endorsements-preview-inner">
+        <div class="section-eyebrow">Trusted By Those Who Know</div>
+        <h2 class="section-title">Endorsed by <em>Fellow Sheriffs</em></h2>
+        <div class="endorsements-list">
+          <div class="endorsement-row">
+            <div class="endorsement-row-left">
+              <div class="endorsement-row-quote">
+                "Only one possesses the experience, knowledge, and moral compass required to lead the Sheriff's Office
+                into the future with integrity and compassion."
+              </div>
+              <div class="endorsement-row-name">Sheriff Mark L. Taylor · Delta County</div>
+            </div>
+          </div>
+
+          <div class="endorsement-row">
+            <div class="endorsement-row-left">
+              <div class="endorsement-row-quote">
+                "His sound advice, integrity, and strong moral compass were qualities I relied upon, particularly during
+                difficult moments."
+              </div>
+              <div class="endorsement-row-name">Sheriff Dan Covault · San Miguel County</div>
+            </div>
+          </div>
+
+          <div class="endorsement-row">
+            <div class="endorsement-row-left">
+              <div class="endorsement-row-quote">
+                "Quinn is a man of strong character, integrity, and professionalism. His credibility is beyond
+                reproach."
+              </div>
+              <div class="endorsement-row-name">Sheriff Justin Perry · Ouray County</div>
+            </div>
+          </div>
+
+          <div class="endorsement-row">
+            <div class="endorsement-row-left">
+              <div class="endorsement-row-quote">
+                "There is no doubt in my mind that Quinn has the character, knowledge and dedication to serve Delta
+                County as their next Sheriff."
+              </div>
+              <div class="endorsement-row-name">Sheriff Todd Rowell · Mesa County</div>
+            </div>
+          </div>
+
+          <div class="endorsement-row">
+            <div class="endorsement-row-left">
+              <div class="endorsement-row-quote">
+                "He has always acted professionally, honestly — his responses and actions are both measured and well
+                thought out."
+              </div>
+              <div class="endorsement-row-name">Randy Toltz · Delta County Search &amp; Rescue Commander</div>
+            </div>
+          </div>
+        </div>
+        <div class="endorsements-footer">
+          <a href="endorsements.html" class="btn-endorsements">Read Full Letters →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <div class="section-eyebrow center">Join the Campaign</div>
+        <h2 class="section-title center">Stand with <em>Quinn</em></h2>
+        <p class="contact-sub">
+          Whether you want to volunteer, display a yard sign, make a donation, or just learn more — we'd love to hear
+          from you.
+        </p>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="interest">How would you like to help?</label>
+            <select id="interest" name="interest">
+              <option value="">Select an option</option>
+              <option value="volunteer">Volunteer</option>
+              <option value="yardsign">Yard Sign</option>
+              <option value="donate">Donate</option>
+              <option value="info">Just want more info</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message (optional)</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Anything you'd like Quinn to know..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <div class="form-success" id="formSuccess">Thank you! We'll be in touch soon.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- MESA DIVIDER -->
+    <div class="mesa-divider">
+      <img src="/images/quinn-mesa.webp" alt="" aria-hidden="true" class="mesa-divider-img" width="2050" height="194" loading="lazy" />
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="footer-name">Quinn Archibeque</span>
+          <span class="footer-title">for Delta County Sheriff</span>
+        </div>
+        <div class="footer-slogan">Homegrown Values · Proven Service · Leading with Experience</div>
+        <div class="footer-legal">Paid for by the Committee to Elect Quinn Archibeque for Delta County Sheriff.</div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

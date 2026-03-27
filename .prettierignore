@@ -1,0 +1,8 @@
+# Don't format these
+node_modules/
+*.min.js
+*.min.css
+images/
+pdfs/
+emails/
+flyers/

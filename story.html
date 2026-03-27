@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quinn's Story — Quinn Archibeque for Delta County Sheriff</title>
+  <meta name="description" content="From the Western Slope to law enforcement — Quinn Archibeque's story of service in Delta County." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1a2333;
+      --navy-lt: #243147;
+      --gold:    #c9a84c;
+      --gold-lt: #e2c47a;
+      /* Darker gold for text on light backgrounds — passes WCAG 3:1 */
+      --gold-on-light: #7a5c0a;
+      --cream:   #f5f0e8;
+      --warm:    #ede7d9;
+      --text:    #1a2333;
+      --muted:   #5a6070;
+      --rule:    #c9a84c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+    .nav-logo-name { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; }
+    .nav-logo-title { font-family: 'Barlow Condensed', sans-serif; color: var(--gold); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .nav-back {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold-lt); }
+    .nav-back-arrow { font-size: 1rem; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 9rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 3px; background: var(--gold);
+    }
+    .page-header-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+    }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .page-header-sub {
+      font-family: 'Source Serif 4', serif;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      margin-top: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* ── STORY LAYOUT ── */
+    .story {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    /* ── CHAPTER BLOCKS ── */
+    .chapter {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .chapter.visible { opacity: 1; transform: none; }
+
+    .chapter-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .chapter-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.3;
+    }
+
+    .chapter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      color: var(--navy);
+    }
+    .chapter h2 em { color: var(--gold-on-light); font-style: italic; }
+
+    .chapter p {
+      font-size: 1.05rem;
+      color: #2e3545;
+      margin-bottom: 1.1rem;
+      line-height: 1.8;
+    }
+    .chapter p:last-child { margin-bottom: 0; }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: var(--warm);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── CAREER LADDER ── */
+    .career-ladder {
+      background: var(--navy);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+    }
+    .career-ladder-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .career-ladder-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .career-ladder-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .career-ladder-list li:last-child { border-bottom: none; }
+    .career-ladder-list .year {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      min-width: 80px;
+      padding-top: 2px;
+    }
+    .career-ladder-list .role {
+      font-family: 'Source Serif 4', serif;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .career-ladder-list .agency {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* ── DIVIDER ── */
+    .story-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 3rem 0;
+    }
+    .story-divider::before, .story-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.25;
+    }
+    .story-divider-star {
+      color: var(--gold); font-size: 0.9rem;
+    }
+
+    /* ── CLOSING STATEMENT ── */
+    .closing {
+      background: var(--navy);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .closing-inner { max-width: 680px; margin: 0 auto; }
+    .closing-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 0.6;
+      margin-bottom: 1.5rem;
+      display: block;
+      opacity: 0.6;
+    }
+    .closing blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: #fff;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+    .closing cite {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* ── CTA ── */
+    .cta-bar {
+      background: var(--warm);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .cta-bar-inner { max-width: 560px; margin: 0 auto; }
+    .cta-bar p {
+      font-family: 'Source Serif 4', serif;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.5rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: var(--gold-lt); }
+    .btn-ghost {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      margin-left: 1rem;
+    }
+    .btn-ghost:hover { background: var(--navy); color: #fff; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy);
+      border-top: 2px solid var(--gold);
+      padding: 2rem;
+      text-align: center;
+    }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.1rem;
+      display: block;
+    }
+    .footer-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.25rem;
+    }
+    .footer-slogan {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+    .footer-legal {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      .btn-ghost { margin-left: 0; margin-top: 0.75rem; display: block; }
+      .career-ladder { padding: 1.5rem; }
+    }
+
+       /* Mesa landscape divider above footer */
+    .mesa-divider {
+      width: 100%;
+      line-height: 0;
+      background: #0e1a2e; /* matches footer dark bg — adjust if your footer color differs */
+      overflow: hidden;
+    }
+    .mesa-divider-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-name">Quinn Archibeque</span>
+      <span class="nav-logo-title">for Sheriff</span>
+    </a>
+    <a href="/" class="nav-back">
+      <span class="nav-back-arrow">←</span> Back to Home
+    </a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-eyebrow">Delta County Sheriff 2026</div>
+    <h1>Quinn's <em>Story</em></h1>
+    <p class="page-header-sub">Nearly three decades of service — rooted in Delta County soil.</p>
+  </header>
+
+  <!-- STORY BODY -->
+  <main class="story">
+
+    <!-- ROOTS -->
+    <div class="chapter" data-reveal>
+      <div class="chapter-label">The Beginning</div>
+      <h2>Delta County <em>Roots</em></h2>
+      <p>I was born in Delta and raised on a farm between Delta and Olathe — a farm that my great, great-grandfather homesteaded and my parents still live on today. I was raised by farmers, ranchers, and miners, and that upbringing instilled a work ethic in me that I am proud to say I passed on to my own kids.</p>
+      <p>I have two adult children: my son works in the oil and gas industry and my daughter is a nurse. My amazing wife and I take every opportunity to enjoy our mountains and are checking travel destinations off our bucket list.</p>
+      <p>I chose to raise my kids in Delta County. They grew up in Cedaredge and graduated from Cedaredge High School. It is because of those roots, and my love of this community, that I have dedicated most of my adult life to public safety and the citizens of Delta County.</p>
+    </div>
+
+    <div class="story-divider"><span class="story-divider-star">★</span></div>
+
+    <!-- CAREER -->
+    <div class="chapter" data-reveal>
+      <div class="chapter-label">The Career</div>
+      <h2>Rising Through <em>the Ranks</em></h2>
+      <p>I started my law enforcement career in 1998 with the Cedaredge Police Department. I'm grateful for the opportunity that small town brought — the diversity of calls, the close-knit relationships, and the chance to develop as an officer. During my time in Cedaredge, I served as a Patrol Officer and a Patrol Sergeant, and I developed the first formal Field Training Officer (FTO) program for the department.</p>
+      <p>To further my career, training opportunities, and experience, I took a position as a Patrol Officer with the Delta Police Department — a larger community with its own identity and unique traits that helped me grow in ways a smaller posting couldn't.</p>
+      <p>I started with the Delta County Sheriff's Office in 2008 as a Reserve Deputy. I found what I considered a home and decided I would finish my career here. I worked my way through the ranks, and when Sheriff Taylor asked me to be his Undersheriff in 2019, I eagerly accepted the challenge.</p>
+
+      <div class="career-ladder">
+        <div class="career-ladder-title">Career Timeline</div>
+        <ul class="career-ladder-list">
+          <li>
+            <span class="year">1998</span>
+            <div>
+              <span class="role">Patrol Officer &amp; Patrol Sergeant</span>
+              <span class="agency">Cedaredge Police Department</span>
+            </div>
+          </li>
+          <li>
+            <span class="year">Mid Career</span>
+            <div>
+              <span class="role">Patrol Officer</span>
+              <span class="agency">Delta Police Department</span>
+            </div>
+          </li>
+          <li>
+            <span class="year">2008</span>
+            <div>
+              <span class="role">Reserve Deputy → Patrol Deputy</span>
+              <span class="agency">Delta County Sheriff's Office</span>
+            </div>
+          </li>
+          <li>
+            <span class="year">—</span>
+            <div>
+              <span class="role">Investigator</span>
+              <span class="agency">Delta County Sheriff's Office</span>
+            </div>
+          </li>
+          <li>
+            <span class="year">—</span>
+            <div>
+              <span class="role">Investigations Sergeant</span>
+              <span class="agency">Delta County Sheriff's Office</span>
+            </div>
+          </li>
+          <li>
+            <span class="year">2019</span>
+            <div>
+              <span class="role">Undersheriff</span>
+              <span class="agency">Delta County Sheriff's Office</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <p>As Undersheriff, I have learned first-hand how a sheriff's office functions, the statutory obligations of an elected sheriff, and the expectations of the citizens of Delta County. There is no other position within a sheriff's office — or any other law enforcement agency — that can better prepare someone to be sheriff than serving as undersheriff.</p>
+      <p>I am proud of the men and women who are the Sheriff's Office, and blessed that I was able to take part in building that team.</p>
+    </div>
+
+    <div class="story-divider"><span class="story-divider-star">★</span></div>
+
+    <!-- TRAINING & EDUCATION -->
+    <div class="chapter" data-reveal>
+      <div class="chapter-label">Training &amp; Education</div>
+      <h2>Always <em>Learning</em></h2>
+      <p>Throughout my career, I have attended hundreds of hours of leadership and supervisory training — coursework designed for both the public and private sector. I have served as a Field Training Officer, a Use of Force Instructor, and a Driving Instructor. I currently sit on the Colorado POST Driving Board as a Subject Matter Expert.</p>
+      <p>I am currently finishing my bachelor's degree in law enforcement leadership through Grand Canyon University, maintaining a 4.0 GPA while balancing work, home, and family life. A commitment to growth isn't something I talk about — it's something I live.</p>
+    </div>
+
+    <div class="story-divider"><span class="story-divider-star">★</span></div>
+
+    <!-- VISION -->
+    <div class="chapter" data-reveal>
+      <div class="chapter-label">The Vision</div>
+      <h2>The County We <em>Deserve</em></h2>
+      <p>This isn't the same community a lot of us grew up in. Delta County is still a farm and ranch community with endless outdoor activities in our backyard — but we don't have to look far to see the effects of homelessness, mental health issues, illegal narcotics, and a lack of personal accountability. Many of the changes our community is experiencing are the result of the decriminalization of too many crimes.</p>
+
+      <div class="pull-quote">
+        <p>In recent years, there has been a drastic shift in the criminal justice system — the emphasis is little to no accountability on criminals, at the cost of victims and our society. I am genuinely concerned about the generational consequences of that shift. If the system fails to hold people accountable today, what are the effects years from now?</p>
+      </div>
+
+      <p>I believe that like any profession, law enforcement must evolve to the changing needs of the community it serves. How things were done when I started my career is not, and should not be, how they are done today. In partnership with citizens and stakeholders, we must work to stay ahead of changing trends — constantly asking ourselves: <em>What can we do better?</em></p>
+      <p>I currently sit on statewide boards and am a member of statewide associations. As sheriff, I will continue to be a voice for Delta County in Denver. It is the duty of the sheriff to advocate for the county and the citizens who elect him. When legislation coming out of the State Capitol conflicts with Federal Law and the United States Constitution, Delta County deserves a sheriff who will stand up and say so.</p>
+      <p>There has to be a shift in the criminal justice system to recognize the voices of victims of crime. I will fight for more accountability — and I will start by making sure the Delta County Sheriff's Office puts forth the best possible product. That can only be accomplished by ensuring the men and women who are the Sheriff's Office have the tools, training, and resources they need to serve this county.</p>
+      <p><strong>The public safety of Delta County and its citizens is the priority.</strong></p>
+    </div>
+
+  </main>
+
+  <!-- CLOSING QUOTE -->
+  <section class="closing">
+    <div class="closing-inner">
+      <span class="closing-quote-mark">"</span>
+      <blockquote>
+        Accountability under the law. Protection of constitutional rights. Leadership rooted in Western Colorado values. That is my commitment to the people of Delta County.
+      </blockquote>
+      <cite>— Quinn Archibeque</cite>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-bar">
+    <div class="cta-bar-inner">
+      <p>Ready to stand with Quinn? Get involved with the campaign today.</p>
+      <a href="/#contact" class="btn btn-primary">Get Involved</a>
+      <a href="/" class="btn btn-ghost">Back to Home</a>
+    </div>
+  </section>
+
+    <!-- MESA DIVIDER -->
+    <div class="mesa-divider">
+        <img src="/images/quinn-mesa.webp" alt="" aria-hidden="true" class="mesa-divider-img" width="2050" height="194" loading="lazy" />
+    </div>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-name">Quinn Archibeque</span>
+    <span class="footer-title">for Delta County Sheriff</span>
+    <div class="footer-slogan">Homegrown Values · Proven Service · Leading with Experience</div>
+    <div class="footer-legal">Paid for by the Committee to Elect Quinn Archibeque for Delta County Sheriff.</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const chapters = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    chapters.forEach(c => observer.observe(c));
+  </script>
+
+</body>
+</html>
