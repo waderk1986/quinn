@@ -778,10 +778,17 @@ cite {
 .event-meta span {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
 }
-.event-meta .event-meta-icon {
+.event-location::before {
+  content: "·";
   color: var(--gold);
+  font-weight: 700;
+  margin-right: 12px;
+}
+@media (max-width: 600px) {
+  .event-location::before {
+    display: none;
+  }
 }
 @media (max-width: 600px) {
   .event-card {
