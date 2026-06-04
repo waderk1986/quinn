@@ -804,6 +804,14 @@ cite {
   color: var(--gold-light);
   border-color: var(--gold-light);
 }
+.event-note {
+  margin-top: 10px;
+  font-family: var(--font-cond);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: #5a6a7a;
+}
 @media (max-width: 600px) {
   .event-location::before {
     display: none;
