@@ -714,6 +714,25 @@ cite {
   flex-direction: column;
   gap: 20px;
 }
+.thankyou-note {
+  max-width: 720px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+.thankyou-note p {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-body);
+  margin-bottom: 1.5rem;
+}
+.thankyou-sign {
+  font-family: var(--font-display) !important;
+  font-style: italic;
+  font-size: 1.25rem !important;
+  color: var(--navy);
+  margin-top: 2rem;
+}
 .event-card {
   display: grid;
   grid-template-columns: auto 1fr;
